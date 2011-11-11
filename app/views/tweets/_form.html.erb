@@ -1,0 +1,57 @@
+<%= form_for(@tweet) do |f| %>
+  <% if @tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+      <ul>
+      <% @tweet.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :tweet_id %><br />
+    <%= f.text_field :tweet_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tweet_time %><br />
+    <%= f.text_field :tweet_time %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_user %><br />
+    <%= f.text_field :twitter_user %>
+  </div>
+  <div class="field">
+    <%= f.label :twitter_user_id %><br />
+    <%= f.text_field :twitter_user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :tweet_body %><br />
+    <%= f.text_field :tweet_body %>
+  </div>
+  <div class="field">
+    <%= f.label :latitudes %><br />
+    <%= f.text_field :latitudes %>
+  </div>
+  <div class="field">
+    <%= f.label :longitudes %><br />
+    <%= f.text_field :longitudes %>
+  </div>
+  <div class="field">
+    <%= f.label :query %><br />
+    <%= f.text_field :query %>
+  </div>
+  <div class="field">
+    <%= f.label :loc_flag %><br />
+    <%= f.text_field :loc_flag %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br />
+    <%= f.text_field :location %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

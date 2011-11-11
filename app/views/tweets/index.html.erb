@@ -1,0 +1,66 @@
+<head><title>Trend Visualize </title>
+
+<%= javascript_include_tag "/assets/jquery-1.6.4" %> 
+<%= javascript_include_tag "/assets/js/highcharts"  %>
+<script type="text/javascript">
+
+
+function addFigure(str) {
+var num = new String(str).replace(/,/g, "");
+while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+return num;
+}
+
+var chart;
+$(document).ready(function() {
+chart = new Highcharts.Chart({
+
+chart: {
+renderTo: 'Graph_SpendTarget',
+defaultSeriesType: 'line',
+},
+
+title: {
+text: '# of Tweets',
+x: -20 //center
+},
+
+subtitle: {
+text: 'Comparison:   <%= params[:search_query] %>  with  <%= params[:search_test] %>  ',
+x: -20
+},
+
+xAxis: {
+categories: [
+  '1','2','3','4','5','5',
+],labels: {step: 6} },
+
+yAxis: {
+title: {text: '# of tweets'},
+min: 0,
+plotLines: [{value: 0,width: 1,color: '#808080'}]},
+legend: {layout: 'vertical',align: 'right',verticalAlign: 'low',},
+plotOptions: {series: {marker: {enabled: false},shadow: false,}},
+tooltip: {formatter: function() {return '<b>'+ this.series.name +'</b><br/>'+
+this.x +': '+ addFigure(this.y) ;}
+},
+series: [
+{ name:' <%= params[:search_query] %> ',type:'line',data:[
+1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7
+] ,dashStyle:'shortdot',color: '#83A603'},
+
+{ name:' <%= params[:search_test] %> ',type:'line',data:[1,2,3,4,5,6,7,8,9,0,1,2,3,4,5
+] ,dashStyle:'shortdot',color: '#B22222'},
+
+]
+
+});
+
+});
+</script>
+</head>
+
+<body>
+<div id=Graph_SpendTarget style="width: 1000px; height: 400px"  ></div>
+</body>
+<%= link_to 'New Tweet', new_tweet_path %>

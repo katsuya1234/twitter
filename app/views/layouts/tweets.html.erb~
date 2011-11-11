@@ -1,0 +1,52 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>To develop PR Strategy: <%= controller.action_name %></title>
+
+<div id ="learn-more-wrap"> <div class="container"> <h2>Search Query on Social Media</h2></div\
+> </div>
+</head>
+<body>
+<br>
+<span style="text-align: left">
+  <% form_tag "/companies/graph2" do %>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Information Source ：<select name="search_string"><br>
+<option value="Twitter">Twitter</option>
+<option value="Blog">Blog</option>
+<option value="News">News</option>
+<option value="Search">Search Resutlt</option>
+</select><br><br>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Company Name ：<select name="search_query"> <br>
+<option value="GREE">GREE</option>
+<option value="DeNA">DeNA</option>
+<option value="グリー">グリー</option>
+<option value="モバゲー">モバゲー</option>
+<option value="Mobage">Mobage</option>
+<option value="mixi">mixi</option>
+<option value="楽天">楽天</option>
+<option value="サイバーエージェント">サイバーエージェント</option>
+</select>
+
+&nbsp;&nbsp; vs &nbsp;&nbsp;Company Name ：<select name="search_test"><br>
+<option value="DeNA">DeNA</option>
+<option value="GREE">GREE</option>
+<option value="グリー">グリー</option>
+<option value="モバゲー">モバゲー</option>
+<option value="Mobage">Mobage</option>
+<option value="mixi">mixi</option>
+<option value="楽天">楽天</option>
+<option value="サイバーエージェント">サイバーエージェント</option>
+</select>
+&nbsp; →　&nbsp;　    <%= submit_tag "Search" %>
+  <% end %>
+</span>
+<p style="color: green"><%= flash[:notice] %></p>
+<%= yield  %>
+</body>
+</html>
